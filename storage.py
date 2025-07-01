@@ -23,6 +23,10 @@ def save_response(data: dict):
     """
     Save the user response to the Google Sheet.
     """
-    columns = ["name", "answer"]
-    row = [data.get(col, "") for col in columns]
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    row = [
+        data.get("name", ""),
+        data.get("answer", ""),
+        timestamp
+    ]
     sheet.append_row(row)
