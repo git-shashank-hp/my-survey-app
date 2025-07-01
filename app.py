@@ -3,14 +3,12 @@ from storage import save_response
 
 st.title("Simple Survey App")
 
-# Input fields
 name = st.text_input("Enter your name:")
-response = st.radio("Do you agree?", ("Yes", "No"))
+response = st.radio("Do you like this app?", ("Yes", "No"))
 
-# Submit button
 if st.button("Submit"):
-    if name.strip() == "":
+    if not name.strip():
         st.warning("Please enter your name.")
     else:
-        save_response(name, response)
+        save_response({"name": name, "answer": response})
         st.success("Response submitted successfully!")
